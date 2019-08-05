@@ -1,0 +1,16 @@
+project(factorial)
+
+add_library(lib_fact STATIC fact.cc)
+set_target_properties(lib_fact
+    PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib/"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib/"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
+)
+
+add_executable(fact main.cc)
+target_link_libraries(fact ${CMAKE_SOURCE_DIR}/lib/liblib_fact.a)
+set_target_properties(fact
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/"
+)
